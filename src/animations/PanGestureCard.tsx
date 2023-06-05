@@ -1,6 +1,12 @@
 import React from 'react';
 
-import {View, Text, StyleSheet, useWindowDimensions} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  useWindowDimensions,
+  SafeAreaView,
+} from 'react-native';
 import {PanGestureHandler} from 'react-native-gesture-handler';
 import Animated, {
   useAnimatedGestureHandler,
@@ -62,13 +68,15 @@ export const PanGestureCard = () => {
   }));
 
   return (
-    <View style={styles.container}>
-      <PanGestureHandler onGestureEvent={onGestureEventHandler}>
-        <Animated.View style={animatedStyle}>
-          <Card />
-        </Animated.View>
-      </PanGestureHandler>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
+        <PanGestureHandler onGestureEvent={onGestureEventHandler}>
+          <Animated.View style={animatedStyle}>
+            <Card />
+          </Animated.View>
+        </PanGestureHandler>
+      </View>
+    </SafeAreaView>
   );
 };
 
